@@ -36,3 +36,17 @@ func PrintIndex(i int) error {
 	fmt.Print(i, " ")
 	return nil
 }
+
+func ExampleBranch_no_else() {
+
+	adt := Branch(
+		Case(IsMod(3), Print("Three")),
+	)
+
+	err := adt.Run(1)
+
+	fmt.Println(err)
+
+	// Output:
+	// <nil>
+}
