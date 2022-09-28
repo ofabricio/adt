@@ -4,10 +4,12 @@ This library makes it easy to build and change business logic.
 
 It makes code:
 
-- match flow diagrams.
-- easy to read.
-- easy to test.
-- modular.
+- Match flow diagrams.
+- Easy to read.
+- Easy to test.
+- Modular.
+
+[![build](https://github.com/ofabricio/adt/actions/workflows/go.yml/badge.svg)](https://github.com/ofabricio/adt/actions/workflows/go.yml)
 
 ## Install
 
@@ -60,10 +62,7 @@ func PrintIndex(i int) error {
 ```
 
 Don't let this simple example fool you.
-It's not showing this lib true power.
 This is a very simple, yet powerful lib.
-
-For a more complex real life example see [here]().
 
 ## About
 
@@ -260,6 +259,9 @@ graph LR
 
 Retry retries a function if it returns an error.
 
+In the following example, suppose that `Say("Two")` returns and prints an error `Oops` the first time it runs.
+The output would be like below.
+
 ```go
 func Example() {
 
@@ -275,12 +277,15 @@ func Example() {
 }
 ```
 
-Suppose that `Say("Two")` returns and prints an error `Oops` the first time it runs.
-The output would be like the above.
-
 ### Catch
 
 Catch is called when an error happens.
+
+Note that whenever any function in the ADT returns an error the ADT stops and [Run()](#run) returns the error.
+In order to not stop it you need to catch and handle the error (by returning `nil`).
+
+In the following example, suppose that `Say("Two")` returns and prints an error `Oops` the first time it runs.
+By handling it the output would be like below.
 
 ```go
 func Example() {
@@ -301,9 +306,6 @@ func Handle(v int, err error) error {
     return nil
 }
 ```
-
-Suppose that `Say("Two")` returns and prints an error `Oops` the first time it runs.
-The output would be like the above.
 
 ### On
 
